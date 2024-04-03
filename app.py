@@ -19,33 +19,55 @@ def get():
 def diet():
     data = request.get_json()
     print(data)
-
+# 
+    # veg = data['veg']
     # Define the list of food items with their nutritional content for protein and carbs separately
-    protein_sources = [
-        {'name': 'Chicken Breast', 'protein': 30, 'carbs': 0},
-        {'name': 'Turkey Breast', 'protein': 25, 'carbs': 0},
-        {'name': 'Eggs', 'protein': 6, 'carbs': 1},
-        {'name': 'Tofu', 'protein': 8, 'carbs': 2},
-        {'name': 'Lentils', 'protein': 9, 'carbs': 20},
-        {'name': 'Greek Yogurt', 'protein': 10, 'carbs': 3},
-        {'name': 'Almonds', 'protein': 21, 'carbs': 22},
-        {'name': 'Milk', 'protein': 8, 'carbs': 12},
-        {'name': 'Cottage Cheese', 'protein': 11, 'carbs': 3},
-        {'name': 'Salmon', 'protein': 25, 'carbs': 0},
-        {'name': 'Tuna', 'protein': 30, 'carbs': 0},
-        {'name': 'Beef', 'protein': 36, 'carbs': 0},
-        {'name': 'Pork', 'protein': 25, 'carbs': 0},
-        {'name': 'Shrimp', 'protein': 24, 'carbs': 0},
-        {'name': 'Lamb', 'protein': 25, 'carbs': 0},
-        {'name': 'Bison', 'protein': 29, 'carbs': 0},
-        {'name': 'Venison', 'protein': 30, 'carbs': 0},
-        {'name': 'Duck', 'protein': 29, 'carbs': 0},
-        {'name': 'Quail', 'protein': 25, 'carbs': 0},
-        {'name': 'Goose', 'protein': 29, 'carbs': 0}
-        # Add more protein sources here
-    ]
+    protein_sources = {
+        "Veg": [
+            {'name': 'Tofu', 'protein': 8, 'carbs': 2},
+            {'name': 'Lentils', 'protein': 9, 'carbs': 20},
+            {'name': 'Greek Yogurt', 'protein': 10, 'carbs': 3},
+            {'name': 'Almonds', 'protein': 21, 'carbs': 22},
+            {'name': 'Milk', 'protein': 8, 'carbs': 12},
+            {'name': 'Cottage Cheese', 'protein': 11, 'carbs': 3},
+            {'name': 'Chickpeas', 'protein': 9, 'carbs': 27},
+            {'name': 'Peanuts', 'protein': 26, 'carbs': 16},
+            {'name': 'Green Peas', 'protein': 5, 'carbs': 14},
+            {'name': 'Pumpkin Seeds', 'protein': 19, 'carbs': 10},
+            {'name': 'Chia Seeds', 'protein': 17, 'carbs': 12},
+            {'name': 'Quinoa', 'protein': 4, 'carbs': 21},
+            {'name': 'Soy Milk', 'protein': 7, 'carbs': 4},
+            {'name': 'Edamame', 'protein': 11, 'carbs': 10},
+            {'name': 'Tempeh', 'protein': 19, 'carbs': 9},
+            {'name': 'Seitan', 'protein': 25, 'carbs': 9}
+            # Add more vegetarian protein sources here
+        ],
+        "Non_veg": [
+            {'name': 'Chicken Breast', 'protein': 30, 'carbs': 0},
+            {'name': 'Turkey Breast', 'protein': 25, 'carbs': 0},
+            {'name': 'Eggs', 'protein': 6, 'carbs': 1},
+            {'name': 'Salmon', 'protein': 25, 'carbs': 0},
+            {'name': 'Tuna', 'protein': 30, 'carbs': 0},
+            {'name': 'Beef', 'protein': 36, 'carbs': 0},
+            {'name': 'Pork', 'protein': 25, 'carbs': 0},
+            {'name': 'Shrimp', 'protein': 24, 'carbs': 0},
+            {'name': 'Lamb', 'protein': 25, 'carbs': 0},
+            {'name': 'Bison', 'protein': 29, 'carbs': 0},
+            {'name': 'Venison', 'protein': 30, 'carbs': 0},
+            {'name': 'Duck', 'protein': 29, 'carbs': 0},
+            {'name': 'Quail', 'protein': 25, 'carbs': 0},
+            {'name': 'Goose', 'protein': 29, 'carbs': 0},
+            {'name': 'Rabbit', 'protein': 29, 'carbs': 0},
+            {'name': 'Elk', 'protein': 30, 'carbs': 0},
+            {'name': 'Ostrich', 'protein': 28, 'carbs': 0},
+            {'name': 'Buffalo', 'protein': 29, 'carbs': 0},
+            {'name': 'Alligator', 'protein': 46, 'carbs': 0},
+            {'name': 'Kangaroo', 'protein': 27, 'carbs': 0}
+        ]
+    }
 
-    carbs_sources = [
+    carbs_sources = {
+    "Veg": [
         {'name': 'Brown Rice', 'protein': 5, 'carbs': 25},
         {'name': 'Quinoa', 'protein': 4, 'carbs': 21},
         {'name': 'Sweet Potato', 'protein': 2, 'carbs': 20},
@@ -66,8 +88,33 @@ def diet():
         {'name': 'Papayas', 'protein': 1, 'carbs': 15},
         {'name': 'Watermelon', 'protein': 1, 'carbs': 8},
         {'name': 'Cantaloupe', 'protein': 1, 'carbs': 8}
-        # Add more carbs sources here
+        # Add more vegetarian carbs sources here
+    ],
+    "Non Veg": [
+        {'name': 'White Rice', 'protein': 3, 'carbs': 28},
+        {'name': 'Pasta', 'protein': 6, 'carbs': 25},
+        {'name': 'Bread', 'protein': 6, 'carbs': 24},
+        {'name': 'Potatoes', 'protein': 2, 'carbs': 17},
+        {'name': 'Corn', 'protein': 2, 'carbs': 19},
+        {'name': 'Peas', 'protein': 5, 'carbs': 14},
+        {'name': 'Beans', 'protein': 7, 'carbs': 23},
+        {'name': 'Barley', 'protein': 3, 'carbs': 32},
+        {'name': 'Pumpkin', 'protein': 1, 'carbs': 6},
+        {'name': 'Carrots', 'protein': 1, 'carbs': 12},
+        {'name': 'Onions', 'protein': 1, 'carbs': 9},
+        {'name': 'Tomatoes', 'protein': 1, 'carbs': 4},
+        {'name': 'Bell Peppers', 'protein': 1, 'carbs': 6},
+        {'name': 'Broccoli', 'protein': 3, 'carbs': 7},
+        {'name': 'Spinach', 'protein': 3, 'carbs': 4},
+        {'name': 'Lettuce', 'protein': 1, 'carbs': 2},
+        {'name': 'Cucumbers', 'protein': 1, 'carbs': 4},
+        {'name': 'Zucchini', 'protein': 1, 'carbs': 3},
+        {'name': 'Eggplant', 'protein': 1, 'carbs': 5},
+        {'name': 'Mushrooms', 'protein': 3, 'carbs': 3}
+        # Add more non-vegetarian carbs sources here
     ]
+}
+
 
     # Define the daily protein and carbs requirements
     daily_protein_requirement = int(data['Protien_intake'])  # in grams
@@ -80,6 +127,14 @@ def diet():
         'Dinner': {'start': '18:00', 'end': '19:00'}
     }
 
+    if data['mealType']=="Veg":
+        protein_sources=protein_sources["Veg"]
+        carbs_sources=carbs_sources["Veg"]
+    else:
+        protein_sources=protein_sources["Non_veg"]
+        carbs_sources=carbs_sources["Non Veg"]
+        
+    print(protein_sources,"==========================================================================")
     # Shuffle the food items lists to randomize selection
     random.shuffle(protein_sources)
     random.shuffle(carbs_sources)
